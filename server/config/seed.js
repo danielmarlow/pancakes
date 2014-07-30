@@ -6,6 +6,11 @@
 'use strict';
 
 var Thing = require('../api/thing/thing.model');
+var Survey = require('../api/survey/survey.model');
+var User = require('../api/user/user.model');
+var Question = require('../api/question/question.model');
+var Qchoice = require('../api/qchoice/qchoice.model');
+var Qtype = require('../api/qtype/qtype.model');
 
 
 Thing.find({}).remove(function() {
@@ -27,5 +32,52 @@ Thing.find({}).remove(function() {
   },{
     name : 'Deployment Ready',
     info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
+  });
+});
+
+Survey.find({}).remove(function () {
+  Survey.create({
+    name: 'iHop'
+  },{
+    name: 'Das Survey'
+  })
+});
+
+User.find({}).remove(function () {
+  User.create({
+      name: 'Nick',
+      location: 'CO',
+      Age: '27',
+      BreakfastLover: true
+    },{
+      name: 'Burt',
+      location: 'Da Hood',
+      Age: '35',
+      BreakfastLover: false
+    },{
+      name: 'Ernie',
+      location: 'Da Streets',
+      Age: '35',
+      BreakfastLover: true
+    },{
+      name: 'Dan',
+      location: 'The Woods',
+      Age: '19',
+      BreakfastLover: true
+    },{
+      name: 'Trevor',
+      location: 'Bicycle Lane',
+      Age: '90',
+      BreakfastLover: false
+  });
+});
+
+Question.find({}).remove(function () {
+  Question.create({
+    qtext: 'How hard was it to find what you wanted to eat?',
+    type: Number,
+    survey: Survey.find({name: 'iHop'}).exec().then(function(survey) {
+      return survey._id;
+    })
   });
 });
