@@ -1,0 +1,12 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="page-header">Surveys!</h1>
+      <ul class="nav nav-tabs nav-stacked col-lg-6" ng-repeat="survey in surveys">
+        <li><a href="#" tooltip="{{survey.name}}">{{survey.info}}</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

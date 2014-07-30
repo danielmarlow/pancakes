@@ -5,6 +5,9 @@ angular.module('pancakesApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    }, {
+      'title': 'Admin',
+      'link': '/admin'
     }];
 
     $scope.isCollapsed = true;
